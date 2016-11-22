@@ -24,12 +24,12 @@
 
 import Foundation
 
-public class IndicatorInfo {
+final public class IndicatorInfo {
     
     public var title: String
     public var image: UIImage?
     public var highlightedImage: UIImage?
-    
+  
     public init(title: String, image: UIImage? = nil, highlightedImage: UIImage? = nil) {
         self.title = title
         self.image = image
@@ -40,15 +40,18 @@ public class IndicatorInfo {
 
 extension IndicatorInfo : ExpressibleByStringLiteral {
     
-    public init(stringLiteral value: String){
+    public convenience init(stringLiteral value: String){
+        self.init(stringLiteral: value)
+        title = value
+    }
+  
+    public convenience init(extendedGraphemeClusterLiteral value: String){
+        self.init(stringLiteral: value)
         title = value
     }
     
-    public init(extendedGraphemeClusterLiteral value: String){
-        title = value
-    }
-    
-    public init(unicodeScalarLiteral value: String){
+    public convenience init(unicodeScalarLiteral value: String){
+        self.init(stringLiteral: value)
         title = value
     }
 }
