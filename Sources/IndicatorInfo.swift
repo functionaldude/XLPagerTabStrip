@@ -24,7 +24,7 @@
 
 import Foundation
 
-public class IndicatorInfo: ExpressibleByStringLiteral {
+open class IndicatorInfo: ExpressibleByStringLiteral {
     
     public var title: String
     public var image: UIImage?
