@@ -24,7 +24,7 @@
 
 import Foundation
 
-final public class IndicatorInfo {
+public class IndicatorInfo: ExpressibleByStringLiteral {
     
     public var title: String
     public var image: UIImage?
@@ -35,23 +35,19 @@ final public class IndicatorInfo {
         self.image = image
         self.highlightedImage = highlightedImage
     }
-}
-
-
-extension IndicatorInfo : ExpressibleByStringLiteral {
-    
-    public convenience init(stringLiteral value: String){
-        self.init(stringLiteral: value)
-        title = value
-    }
   
-    public convenience init(extendedGraphemeClusterLiteral value: String){
-        self.init(stringLiteral: value)
-        title = value
-    }
-    
-    public convenience init(unicodeScalarLiteral value: String){
-        self.init(stringLiteral: value)
-        title = value
-    }
+  public convenience required init(stringLiteral value: String){
+    self.init(stringLiteral: value)
+    title = value
+  }
+  
+  public convenience required init(extendedGraphemeClusterLiteral value: String){
+    self.init(stringLiteral: value)
+    title = value
+  }
+  
+  public convenience required init(unicodeScalarLiteral value: String){
+    self.init(stringLiteral: value)
+    title = value
+  }
 }
