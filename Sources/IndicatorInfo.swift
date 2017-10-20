@@ -36,9 +36,8 @@ open class IndicatorInfo: ExpressibleByStringLiteral {
         self.highlightedImage = highlightedImage
     }
   
-  public convenience required init(stringLiteral value: String){
-    self.init(stringLiteral: value)
-    title = value
+  public convenience required init(stringLiteral value: String) {
+    self.init(title: value)
   }
   
   public convenience required init(extendedGraphemeClusterLiteral value: String){
