@@ -268,7 +268,10 @@ open class PagerTabStripViewController: UIViewController, UIScrollViewDelegate {
         let virtualPage = virtualPageFor(contentOffset: containerView.contentOffset.x)
         let newCurrentIndex = pageFor(virtualPage: virtualPage)
         currentIndex = newCurrentIndex
-        preCurrentIndex = currentIndex
+        // Only reset preCurrentIndex if currentIndex is not startVC, needed for: "Start killed app with pushNotificationClick should work now"
+        if currentIndex != 0 {
+          preCurrentIndex = currentIndex
+        }
         let changeCurrentIndex = newCurrentIndex != oldCurrentIndex
 
         if let progressiveDeledate = self as? PagerTabStripIsProgressiveDelegate, pagerBehaviour.isProgressiveIndicator {
