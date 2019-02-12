@@ -33,8 +33,8 @@ open class ButtonBarViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         
         isAccessibilityElement = true
-        accessibilityTraits |= UIAccessibilityTraitButton
-        accessibilityTraits |= UIAccessibilityTraitHeader
+        accessibilityTraits = accessibilityTraits.update(with: UIAccessibilityTraits.button)!
+        accessibilityTraits = accessibilityTraits.update(with: UIAccessibilityTraits.header)!
     }
     
     open override var isSelected: Bool {
@@ -44,9 +44,9 @@ open class ButtonBarViewCell: UICollectionViewCell {
         set {
             super.isSelected = newValue
             if (newValue) {
-                accessibilityTraits |= UIAccessibilityTraitSelected
+                accessibilityTraits = accessibilityTraits.update(with: UIAccessibilityTraits.selected)!
             } else {
-                accessibilityTraits &= ~UIAccessibilityTraitSelected
+                accessibilityTraits = accessibilityTraits.remove(UIAccessibilityTraits.selected)!
             }
         }
     }
